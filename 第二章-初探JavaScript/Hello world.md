@@ -8,7 +8,7 @@
 
 编写和运行 JavaScript 代码最简单的方式是在浏览器地址栏中。是的，就是那个用于输入网址以便你去到因特网的任何地方的地址栏。如图所示：
 
-**![1552904604507](D:\book\第二章-初探JavaScript\Hello world.assets\1552904604507.png)**
+**![1552904604507](D:\book\第二章-初探JavaScript\assets\1552904604507.png)**
 
 我所使用的是运行在 Microsoft Windows 10 上的 Google Chrome 浏览器，如果你的浏览器类型或版本与我不同，可能会呈现出不一样的外观。这是没关系的。当然，为了我们接下来的愉快旅程考虑——使用一些 Chrome 或 Firefox 之类的**流行**浏览器会得到更一致的操作体验，更好的兼容性（关于兼容性的问题我们会在第八章详细谈到）。最重要的是，我们所学习的 JavaScript 语言遵循一个2015年正式发布的国际标准：ECMAScript 6。如果您的浏览器版本较低或“*没有跟上时代的步伐*”，将不能很好地运行我们所写的代码。这非常令人不愉快。无论如何，**请不要使用 Internet Explorer **。
 
@@ -16,7 +16,7 @@
 
 看！一个弹出来的窗口！上面写着 Hello world 。我们已经成功运行了第一个 JavaScript 程序。
 
-![1552905378968](D:\book\第二章-初探JavaScript\Hello world.assets\1552905378968.png)
+![1552905378968](D:\book\第二章-初探JavaScript\assets\1552905378968.png)
 
 Hello world 上方的“cn.bing.com”指我输入这行代码时页面所处的域名，你的应该会和我不一样。不必在意这个。
 
@@ -64,7 +64,7 @@ https://tanpero.github.io/runner/runner.html
 
 点击运行按钮，会得到与刚才相同的效果。
 
-![1552912887244](D:\book\第二章-初探JavaScript\Hello world.assets\1552912887244.png)
+![1552912887244](D:\book\第二章-初探JavaScript\assets\1552912887244.png)
 
 嘿，你注意到了吗：我们写的是 ```alert("Hello world");```，后面多了一个分号！
 
