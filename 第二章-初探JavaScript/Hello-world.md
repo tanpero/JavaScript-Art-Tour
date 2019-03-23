@@ -64,7 +64,7 @@ https://tanpero.github.io/runner/runner.html
 
 点击运行按钮，会得到与刚才相同的效果。
 
-![1552912887244](D:\book\第二章-初探JavaScript\assets\1552912887244.png)
+![1552912887244](./assets/1552912887244.png)
 
 嘿，你注意到了吗：我们写的是 ```alert("Hello world");```，后面多了一个分号！
 
