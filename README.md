@@ -11,17 +11,17 @@
 - 第一章-绪论
 
 - 第二章-初探JavaScript
-  - [Hello world](第三章/Hello world.md)
-  - [表达式与值](第三章/表达式与值.md)
-  - [变量与常量](第三章/变量与常量.md)
-  - [注释](第三章/注释.md)
-  - [输入与输出](第三章/输入与输出.md)
+  - [Hello world](第二章-初探JavaScript/Hello world.md)
+  - [表达式与值](第二章-初探JavaScript/表达式与值.md)
+  - [变量与常量](第二章-初探JavaScript/变量与常量.md)
+  - [注释](第二章-初探JavaScript/注释.md)
+  - [输入与输出](第二章-初探JavaScript/输入与输出.md)
   - HTML
 
 - 第三章-数据
-  - 逻辑
-  - 数值
-  - 字符串
+  - [逻辑](第三章-数据/逻辑.md)
+  - [数值](第三章-数据/数值.md)
+  - [字符串](第三章-数据/字符串.md)
   - 对象
   - 数组
   - typeof
