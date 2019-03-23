@@ -11,7 +11,7 @@
 - 第一章-绪论
 
 - 第二章-初探JavaScript
-  - [Hello world](第二章-初探JavaScript/Hello world.md)
+  - [Hello world]("第二章-初探JavaScript/Hello world.md")
   - [表达式与值](第二章-初探JavaScript/表达式与值.md)
   - [变量与常量](第二章-初探JavaScript/变量与常量.md)
   - [注释](第二章-初探JavaScript/注释.md)
