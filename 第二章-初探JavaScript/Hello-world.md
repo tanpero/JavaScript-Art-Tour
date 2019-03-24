@@ -72,7 +72,7 @@ https://tanpero.github.io/runner/runner.html
 
 你已经了解了编写 JavaScript 代码的基本感觉，现在让我们来尝试一些简单有趣的代码片段，在这个 JavaScript 运行器中好好玩耍！
 
-```alert("你的骰子点数是" + Math.ceil(Math.random()* 6));```
+```alert("你的骰子点数是" + Math.ceil(Math.random() * 6));```
 
 1）这行代码每次运行都会得到一个位于 1 和 6 之间的不一样的骰子点数。
 
