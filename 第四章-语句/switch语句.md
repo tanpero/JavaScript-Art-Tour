@@ -58,5 +58,34 @@ switch (number) {
 
 
 
+生活中有什么事情会像在 1 ~ 3 之间猜一个数字这样简单而乏味呢——让我们将目光投向更“实际”的问题。
+
+现在我们摇身一变成了动物保护专家，向好奇的小朋友普及动物保护的知识，告诉他们哪些动物已经灭绝而湮没在历史中，哪些动物在悬崖边上苦苦挣扎，哪些动物暂时毫无危险。
+
+```javascript
+let animal = "鸵鸟";
+switch (animal) {
+    case "猫":
+    case "金鱼":
+    case "鸵鸟":
+    case "企鹅":
+    case "火鸡":
+    case "马":
+        alert(animal + "没有危险！");
+    case "大象":
+    case "熊猫":
+    case "江豚":
+        alert(animal + "处于危险之中，我们要一起保护它们。")
+    case "渡渡鸟":
+    case "恐龙":
+    case "象鸟":
+        alert(animal + "已经灭绝。")
+    default:
+        alert("我没听过这种动物的名字。");
+}
+```
+
+
+
 
 
