@@ -95,3 +95,85 @@ alert(n); // 120
 4. i = 4, n = n * i = 6 * 4 = 24
 5. i = 5, n = n * i = 24 * 5 = 120
 
+我们可以从用户那里得到一个数字，并求出它的阶乘值。
+
+```javascript
+let n = 1;
+let i = 1;
+let value = parseInt(prompt("请输入一个整数："));
+while (i < value) {
+    i += 1;
+    n *= i;
+}
+
+if (!isFinite(n)) {
+    alert("数字太大了！");
+} else {
+    alert(value + "的阶乘是：" + n);
+}
+```
+
+我们可以输入一些数字来进行测试。如果我们输入的数字的阶乘值太大，超出了 JavaScript 的表示范围（得到 `Infinity`），那么我们会得到一个贴心的提示。或者，得到这个阶乘值（或其约数）。看起来一切正常。
+
+但是！当我们输入负数呢？如果我们输入的内容无法解析为整数以至于得到 `NaN` 呢？我们会得出错误的结果。
+
+```javascript
+value = 0; // 1，正确
+value = -1; // 1，错误
+value = -2; // 1，错误
+value = "Hello"; // 1，错误
+```
+
+关于“负数是否具有阶乘”等数学概念不在这里讨论范围内，我们应当设立明确的界限，对得到的值进行检查。如果它不符合要求，就通知用户，并不进行后续计算。
+
+
+
+```javascript
+let n = 1;
+let i = 1;
+let value = parseInt(prompt("请输入一个正整数："));
+
+if (isNaN(value) || value < 0) {
+    alert("无法进行计算！")
+} else {
+    
+    while (i < value) {
+        i += 1;
+        n *= i;
+    }
+
+    if (!isFinite(n)) {
+        alert("数字太大了！");
+    } else {
+        alert(value + "的阶乘是：" + n);
+    }
+}
+```
+
+这样，我们可以保证：只有当得到一个正确的值的时候，才会进行计算。
+
+我们还可以开动脑筋，将这个程序赋予更多创意：
+
+
+
+```javascript
+let n = 1;
+let i = 1;
+let value = parseInt(prompt("请输入一个正整数："));
+
+while (!isNaN(value) && value >= 0) {    
+    while (i < value) {
+        i += 1;
+        n *= i;
+    }
+
+    if (!isFinite(n)) {
+        alert("数字太大了！");
+    } else {
+        alert(value + "的阶乘是：" + n);
+    }
+    value = parseInt(prompt("请输入一个正整数："));
+}
+```
+
+这个程序将我们已经学习的诸多概念融合在了一起。
