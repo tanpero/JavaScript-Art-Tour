@@ -43,7 +43,7 @@
   - [if 语句](第四章-语句/if语句.md)
   - [switch 语句](第四章-语句/switch语句.md)
   - [while 和 do-while 语句](第四章-语句/while和do-while语句.md)
-  - for 语句
+  - [for 语句](第四章-语句/for语句.md)
   - for-in 和 for-of 语句
   - break 和 continue 语句
   - 异常处理
