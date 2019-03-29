@@ -213,3 +213,25 @@ switch (animal) {
 
 ------
 
+
+
+
+
+### 使用动态条件
+
+我们用一个小示例来结束本节。
+
+```js
+let i = Math.floor(Math.random() * 7)
+switch (i) {
+    case ((i>=0 && i<=5) ? i : -1): 
+        alert("0 ~ 5"); 
+        break;
+    case 6:
+        alert("6");
+        break;
+}
+```
+
+如上所示，你可以在 switch 语句的 `case` 中进行一些运算，以此呈现出“动态”的匹配效果。
+
