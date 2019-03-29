@@ -224,7 +224,7 @@ switch (animal) {
 ```js
 let i = Math.floor(Math.random() * 7)
 switch (i) {
-    case ((i>=0 && i<=5) ? i : -1): 
+    case ((i >= 0 && i <= 5) ? i : -1): // 如果 0 ≤ i ≤ 5，那么待匹配的值为 i ，否则为 -1。
         alert("0 ~ 5"); 
         break;
     case 6:
