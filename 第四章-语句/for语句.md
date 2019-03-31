@@ -182,12 +182,14 @@ for (let i = 3, last = Math.sqrt(n); i <= last; i += 2) {
 alert(isPrime ? "质数" : "合数"); // "合数"
 ```
 
+
+
 我们的程序可以用于处理用户输入并得到结果了，不过务必记得进行输入检查。
 
 ```javascript
 let n = parseInt("请输入一个大于 1 的正整数。");
 while (true) { // 循环接受输入。
-    if (!isNaN(n) && isFinite(n) && n <= 1) {
+    if (isNaN(n) || !isFinite(n) || n <= 1) {
         alert("输入不符合要求！");
         break; // 如果输入不符合要求，就停止循环接受输入。
     }
