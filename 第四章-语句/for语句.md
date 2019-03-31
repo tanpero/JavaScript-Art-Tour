@@ -187,10 +187,10 @@ alert(isPrime ? "质数" : "合数"); // "合数"
 我们的程序可以用于处理用户输入并得到结果了，不过务必记得进行输入检查。
 
 ```javascript
-let n = parseInt("请输入一个大于 1 的正整数。");
+let n = parseInt(prompt("请输入一个大于 1 的正整数。"));
 while (true) { // 循环接受输入。
     if (isNaN(n) || !isFinite(n) || n <= 1) {
-        alert("输入不符合要求！");
+        alert("输入不符合要求，程序停止");
         break; // 如果输入不符合要求，就停止循环接受输入。
     }
     
@@ -202,7 +202,7 @@ while (true) { // 循环接受输入。
         }
     }
     alert(`${n}是一个${isPrime ? "质数" : "合数"}`); // 使用模板字符串来拼凑信息
-    n = parseInt("请输入一个大于 1 的正整数。");
+    n = parseInt(prompt("请输入一个大于 1 的正整数。"));
 }
 ```
 
