@@ -146,5 +146,61 @@ for (let i = 2; i < n; i += 1) {
 alert(isPrime ? "质数" : "合数"); // "合数"
 ```
 
-这里再次出现了 `break;` 语句。类似在 switch 语句中那样，它在这里发挥了直接终止循环的作用。
+这里再次出现了 `break;` 语句。它在这里的作用是**直接终止循环**。
+
+
+
+我们知道，一个合数最大的因数不会超过它的平方根，例如 100 最大的因数就是 10 ，判断一个整数是否为质数，只需列举到它的平方根进行试除就足够了：
+
+```javascript
+let n = 100;
+let isPrime = true; // 假设它是一个质数
+for (let i = 2, last = Math.sqrt(n); i <= last; i += 1) {
+    if (n % i === 0) {
+        isPrime = false;
+        break;
+    }
+}
+alert(isPrime ? "质数" : "合数"); // "合数"
+```
+
+由于除了 2 以外的所有质数都是奇数，因此我们可以进行一个简单的判断：
+
+- 如果输入的数字是 2 ，那么它是一个质数。
+- 如果输入的数字不是 2，但能被 2 整除，那么它是一个合数。
+- 从 3 开始列举它的因数，每次 +2，使列举的值始终是奇数。
+
+```javascript
+let n = 100;
+let isPrime = (n === 2) || (n % 2 !== 0);
+for (let i = 3, last = Math.sqrt(n); i <= last; i += 2) {
+    if (n % i === 0) {
+        isPrime = false;
+        break;
+    }
+}
+alert(isPrime ? "质数" : "合数"); // "合数"
+```
+
+我们的程序可以用于处理用户输入并得到结果了，不过务必记得进行输入检查。
+
+```javascript
+let n = parseInt("请输入一个大于 1 的正整数。");
+while (true) { // 循环接受输入。
+    if (!isNaN(n) && isFinite(n) && n <= 1) {
+        alert("输入不符合要求！");
+        break; // 如果输入不符合要求，就停止循环接受输入。
+    }
+    
+    let isPrime = (n === 2) || (n % 2 !== 0);
+    for (let i = 3, last = Math.sqrt(n); i <= last; i += 2) {
+        if (n % i === 0) {
+            isPrime = false;
+            break; // 这个 break 语句只退出当前所在的循环。
+        }
+    }
+    alert(`${n}是一个${isPrime ? "质数" : "合数"}`); // 使用模板字符串来拼凑信息
+    n = parseInt("请输入一个大于 1 的正整数。");
+}
+```
 
