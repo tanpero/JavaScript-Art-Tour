@@ -256,6 +256,10 @@ while (true) { // 循环接受输入。
 我们应该怎样用 JavaScript 来实现这个过程呢？相信答案已经呼之欲出了——循环！使用循环来解决这个问题。
 
 ```javascript
-let queue = [""]
+let queue = [""];
+
+for (let i = 0; i < queue.length; i += 1) {
+    alert(`第${i}个学生的姓名是：${queue[i]}`);
+}
 ```
 
