@@ -256,11 +256,17 @@ while (true) { // 循环接受输入。
 我们应该怎样用 JavaScript 来实现这个过程呢？相信答案已经呼之欲出了——循环！使用循环来解决这个问题。
 
 ```javascript
-let queue = [""];
+let queue = ["Sonam", "Susanna Kliment", "Unnr Radmila", "Davide", "Rebekah "];
 
 for (let i = 0; i < queue.length; i += 1) {
     alert(`第${i}个学生的姓名是：${queue[i]}`);
 }
+// Sonam
+// Susanna Kliment
+// Unnr Radmila
+// Davide
+// Rebekah 
 ```
 
 我们使用 for 语句依次访问了数组中的每一个元素，变量 `i` 表示数组元素的*索引*，如果这个索引值小于数组长度，说明还没有到数组尽头，那么就继续进行处理，否则就停止循环。依次访问数组每一个元素的过程称为*遍历*。
+
