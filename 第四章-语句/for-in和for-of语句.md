@@ -33,5 +33,23 @@ for (let i in person) {
 // "job"
 ```
 
+有了属性名，我们也就能同时得到它的值：
+
+```javascript
+for (let i in person) {
+    alert(person[i]);
+}
+// "Jason"
+// 30
+// "male"
+// "teacher"
+```
+
+
+
+---
+
+Note：我们只能遍历一个对象中的
+
 
 
