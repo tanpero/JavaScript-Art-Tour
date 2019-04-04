@@ -91,6 +91,31 @@ for (let i in person) {
     delete person[i];
     count += 1;
 }
+// {
+// 第1个属性-name: Jason
+// 第2个属性-age: 30
+// 第3个属性-sex: male
+// 第4个属性-job: teacher
+// }
+```
+
+要知道 for-in 语句赋予了我们随意与属性和值打交道的权力——是的，我们甚至可以*交换*属性的名称与值的位置。**当然，如果原本的值就是一个对象，我们还是不要这样做，否则会发生奇怪的事情。**
+
+```javascript
+const object = {
+    name: "Andy",
+    checked: true,
+    anotherObj: {
+        a: 1,
+        b: 2
+    }
+};
+
+for (let i in object) {
+    let newName = object[i]; // 将原本的值存放起来
+    object[newName] = i;     // 值的内容来命名一个新的属性，它的值就是原本的属性名
+    delete object[i];        // 原来的属性还在，但我们不需要它了
+}
 ```
 
 
