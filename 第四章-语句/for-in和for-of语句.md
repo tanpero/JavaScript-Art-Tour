@@ -179,7 +179,7 @@ for (let i in s) {
 // 第10个字符是 "d"
 ```
 
-
+字符串可以看做“字符的数组”，也就可以通过通常的方式遍历其中包含的每一个字符。
 
 
 
@@ -203,7 +203,28 @@ for (let 变量 in 对象) {
 }
 ```
 
+前面的例子使用 for-of 语句可以改写如下：
 
+```javascript
+const person = {
+    name: "Jason",
+    age:  30,
+    sex: "male",
+    job: "teacher"
+};
+
+for (let i of person) {
+    alert(i);
+}
+// "Jason"
+// 30
+// "male"
+// "teacher"
+```
+
+
+
+与 for-in 语句的显著不同之处在于，for-of 语句只能对**可遍历对象**进行遍历。如果你对一个普通对象使用 for-of 语句，会得到一个错误。
 
 
 
