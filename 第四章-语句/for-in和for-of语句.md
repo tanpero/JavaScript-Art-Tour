@@ -62,7 +62,42 @@ alert(s);
 
 
 
-现在我们与对象更亲近了！
+for-in 语句提供了对对象内容进行操作的快捷方式。在这个遍历的过程中，我们可以干许多事情。比如——给每个属性都重新起一个名字，抛弃原来的：
+
+```javascript
+for (let i in person) {
+    person["属性-" + i] = person[i];
+    delete person[i];
+}
+```
+
+这时再用之前的方式查看对象内容，就会看到每个属性的名字都被改变了。
+
+```
+{
+属性-name: Jason
+属性-age: 30
+属性-sex: male
+属性-job: teacher
+}
+```
+
+我们还可以更进一步：为每个属性都进行编号，毕竟， for-in 语句的本质还是循环，可以做一些适合循环做的事情。
+
+```javascript
+let count = 1;
+for (let i in person) {
+    person[`第${count}个属性-${i}`] = person[i];
+    delete person[i];
+    count += 1;
+}
+```
+
+
+
+现在我们与对象更亲近了！:-D
+
+我们可以自由地查看、操作一个对象的情况
 
 ---
 
