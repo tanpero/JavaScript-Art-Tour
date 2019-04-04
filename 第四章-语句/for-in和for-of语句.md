@@ -203,18 +203,50 @@ for (let 变量 in 对象) {
 }
 ```
 
-前面的例子使用 for-of 语句可以改写如下：
+用 for-of 语句来遍历数组中的每个值会格外方便。
 
 ```javascript
-const person = {
-    name: "Jason",
-    age:  30,
-    sex: "male",
-    job: "teacher"
-};
+const arr = ["aa", "bb", "cc", "dd", "ee", "ff"];
+for (let i of arr) {
+    alert(i);
+}
 
+// "aa"
+// "bb"
+// "cc"
+// "dd"
+// "ee"
+// "ff"
+```
+
+
+
+与 for-in 语句的显著不同之处在于，for-of 语句只能对**可遍历对象**进行遍历。如果你对一个普通对象使用 for-of 语句，会得到一个错误。
+
+```javascript
+// person 对象就是先前的那个
 for (let i of person) {
     alert(i);
+} //  TypeError: person is not iterable
+```
+
+但是不必就此打住：还记得第三章中见到的 `Object.keys` `Object.values` `Object.entries` 三个函数吗？它们得到的是数组！换句话说，我们可以借助于它们来迭代普通对象！
+
+```javascript
+for (let [name, value] of Object.entries(person)) {
+    alert(`${name}: ${value}`);
+};
+// name: Jason
+// age: 30
+// sex: male
+// job: teacher
+```
+
+或者使用 `Object.values` 作为跳板，直接对值进行遍历。
+
+```javascript
+for (let value of Object.values(person)) {
+    alert(value);
 }
 // "Jason"
 // 30
@@ -223,8 +255,6 @@ for (let i of person) {
 ```
 
 
-
-与 for-in 语句的显著不同之处在于，for-of 语句只能对**可遍历对象**进行遍历。如果你对一个普通对象使用 for-of 语句，会得到一个错误。
 
 
 
