@@ -4,7 +4,7 @@
 
 ![](https://img.shields.io/badge/JavaScript-Art--Tour-brightgreen.svg)
 
-![](<assets/Tanpero-book-ff69b4.svg>)
+![](https://img.shields.io/badge/Tanpero-book-ff69b4.svg)
 
 一本从头开始的JavaScript书，为了纪念我小学六年级时那段温暖祥和的日子。
 
@@ -16,7 +16,7 @@
 
 本书的写作计划和章节划分可参看目录，其中添加了链接的章节名称代表着已经完成，或正在写作、可预览的内容。
 
-
+第十一章和第十二章的相关内容可能会在将来进行调整，目前仅是保留一个大致设想。
 
 ---
 
@@ -60,8 +60,7 @@
 
 - 第五章-函数
   - [函数初步](第五章-函数/函数初步.md)
-  - 方法
-  - 构造函数
+  - [方法](第五章-函数/方法.md)
   - 高阶函数
   - 递归
   - 闭包
