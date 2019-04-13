@@ -1,7 +1,7 @@
 # JavaScript 艺术之旅
 
 ---
-![](https://camo.githubusercontent.com/92da008b3c3a511932eeafe02b1ea629fda10428/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6c6173742d636f6d6d69742f51697566656e6735343332312f457261626c652e7376673f6c6f676f3d6a617661)
+![](https://img.shields.io/badge/JavaScript-Art--Tour-brightgreen.svg)
 
 一本从头开始的JavaScript书，为了纪念我小学六年级时那段温暖祥和的日子。
 
