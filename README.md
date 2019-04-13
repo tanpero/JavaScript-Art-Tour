@@ -1,6 +1,7 @@
 # JavaScript 艺术之旅
 
 ---
+
 ![](https://img.shields.io/badge/JavaScript-Art--Tour-brightgreen.svg)
 
 一本从头开始的JavaScript书，为了纪念我小学六年级时那段温暖祥和的日子。
