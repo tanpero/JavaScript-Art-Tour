@@ -172,7 +172,7 @@ if 语句是我们接触到的第一个 JavaScript 控制语句。我们可以�
 我们可以根据税率的级数进行分类讨论，有点像中学数学课上学过的分段函数。
 
 ```javascript
-let income = parseInt(prompt("请输入原始收入"));
+let income = parseFloat(prompt("请输入原始收入"));
 
 let basic = 3500;           // 个人所得税起征点
 let gap   = income - basic; // 税前收入与起征点之差
