@@ -2,6 +2,8 @@
 
 ---
 
+### 初识 HTML
+
 我们已经初步接触了 JavaScript 中的表达式、值、变量、常量、输入输出等一系列最基本的内容，现在让我们把目光从运行器暂时移开，为将来的长远发展做打算。
 
 如前文所说，JavaScript 是一种运行在浏览器中的编程语言。假如离开了这个运行器，它究竟是怎样运行的呢？我们该做些什么呢？
@@ -55,4 +57,202 @@ HTML 的首个公开描述出现于一个名为“HTML 标签”的文件中，�
 在 IETF 的主持下，HTML 标准的进一步发展因竞争利益而遭受停滞。自 1996 年起，HTML 规范一直由万维网联盟（W3C）维护，并由商业软件厂商出资支持。不过在 2000 年，HTML 也成为国际标准（ISO/ IEC 15445：2000）。HTML 4.01 于1 999 年末发布，进一步的勘误版本于 2001 年发布。2004 年，网页超文本应用技术工作小组（WHATWG）开始开发 HTML 5，并在 2008 年与 W3C 共同交付，2014 年 10 月 28 日完成标准化。
 
 ---
+
+
+
+
+
+### 表格
+
+表格是由行和列组成的*结构化数据集*，能够使我们简便迅捷地查找某个值的位置或是一组值的某种关系，例如姓名与年龄的对应关系、学校课程表、游泳池的时刻表等。
+
+![A sample table showing names and ages of some people - Chris 38, Dennis 45, Sarah 29, Karen 47.](https://mdn.mozillademos.org/files/14583/numbers-table.png)
+
+> 图片来自：Mozilla Developer Network
+
+![A swimming timetable showing a sample data table](https://mdn.mozillademos.org/files/14587/swimming-timetable.png)
+
+> 图片来自：Mozilla Developer Network
+
+表格在人类社会中很常见，而且已经存在很长时间了，下面这张 1800 年美国的人口普查表就足以反映。
+
+![A very old parchment document; the data is not easily readable, but it clearly shows a data table being used.](https://mdn.mozillademos.org/files/14585/1800-census.jpg)
+
+> 图片来自：Mozilla Developer Network
+
+常见的文档处理程序，如 Microsoft Office Word 等，都提供了电子表格的支持，HTML 也拥有一套方法来处理和呈现 Web 上表格形式的数据。
+
+表格的一大特点是**严格**，通过在行和列的标题之间进行*视觉关联*的方法，使大量信息得以被快速有效地解读与判断。我们观察如下表格，当我们要快速查询特定的单复数、人称、性别所对应的人称时，表格的结构化就提供了极大地便利。
+
+<table>
+<tbody>
+  <tr>
+   <th colspan="3"></th>
+   <th scope="col">Subject</th>
+   <th scope="col">Object</th>
+  </tr>
+  <tr>
+   <th rowspan="5" scope="rowgroup">单数</th>
+   <th colspan="2" scope="row">第一人称</th>
+   <td>I</td>
+   <td>me</td>
+  </tr>
+  <tr>
+   <th colspan="2" scope="row">第二人称</th>
+   <td>you</td>
+   <td>you</td>
+  </tr>
+  <tr>
+   <th rowspan="3" scope="rowgroup">第三人称</th>
+   <th class="symbol" scope="row">♂</th>
+   <td>he</td>
+   <td>him</td>
+  </tr>
+  <tr>
+   <th class="symbol" scope="row">♀</th>
+   <td>she</td>
+   <td>her</td>
+  </tr>
+  <tr>
+   <th class="symbol" scope="row">other</th>
+   <td>it</td>
+   <td>it</td>
+  </tr>
+  <tr>
+   <th rowspan="3" scope="rowgroup">复数</th>
+   <th colspan="2" scope="row">第一人称</th>
+   <td>we</td>
+   <td>us</td>
+  </tr>
+  <tr>
+   <th colspan="2" scope="row">第二人称</th>
+   <td>you</td>
+   <td>you</td>
+  </tr>
+  <tr>
+   <th colspan="2" scope="row">第三人称</th>
+   <td>they</td>
+   <td>them</td>
+  </tr>
+</tbody>
+</table>
+
+表格在信息技术领域所承担的重要作用超越了本书的范围。除了文字处理程序提供的便捷的表格操作，在 HTML 里纯手工“画”一个表格也并非什么难事。下面，我们将动手创建一个可爱的 HTML 表格。
+
+- 所有的表格都包含在 `<table></table>` 这对标签中，我们首先在 HTML 源代码里添加这些内容。
+
+- 我们知道，表格是由一个个单元格构成的。一个单元格就是一对 `<td></td>` 标签，其中包含单元格将会呈现的内容。我们把下面的内容添加到 `<table>` 标签内。
+
+  ```html
+  <td>你好！我是第一个单元格~</td>
+  ```
+
+  如果我们想要一行四个单元格，我们需要把这组标签复制三次。
+
+  ```html
+  <td>你好！我是第一个单元格~</td>
+  <td>我是第二个单元格</td>
+  <td>我是第三个单元格</td>
+  <td>我是第四个单元格</td>
+  ```
+
+  四个单元格呈现出这样的效果：
+
+  ![1563330252149](C:\Users\alphaxuan\AppData\Roaming\Typora\typora-user-images\1563330252149.png)
+
+  你会看到, 单元格不会放置在彼此的下方, 而是自动与同一行上的其他单元格对齐. 每个 `<td>` 元素 创建一个单独单元格，它们共同组成了第一行。同时，表格并没有呈现出我们通常所见的分隔线。在后续的章节中，我们将了解到如何使用*样式*，来使表格看起来更像是“经典”的表格。
+
+- 如果想停止在这一行添加单元格，并开启新的一行，我们需要使用 `<tr>` 元素。
+
+  1. 把已经创建好的 4 个单元格放入 `<tr>` 标签， 就像这样：
+
+     ```html
+     <tr>
+         <td>你好！我是第一个单元格~</td>
+         <td>我是第二个单元格</td>
+         <td>我是第三个单元格</td>
+         <td>我是第四个单元格</td>
+     </tr>
+     ```
+
+  2. 现在我们已经拥有了完整的一行，可以继续增加至两行、三行。每一行都需要包裹在专属的 `<tr>` 标签中，`<tr>` 标签内只能存放 `<td>` 单元格。
+
+  3. 我们得到了一个类似这样的表格：
+
+  | 你好！我是第一个单元格~ | 我是第二个单元格 | 我是第三个单元格 | 我是第四个单元格 |
+  | ----------------------- | ---------------- | ---------------- | ---------------- |
+  | 第二行第一个单元格      | 呜呜呜           | 好寂寞           | 谁来陪我鸭       |
+
+   而实际呈现的效果大致是如下：
+
+  ![1563331271632](C:\Users\alphaxuan\AppData\Roaming\Typora\typora-user-images\1563331271632.png)
+
+- 现在，让我们把注意力转向表格标题，表格中的标题是特殊的单元格，通常在行或列的开始处，定义行或列包含的数据类别。我们可以看一下这个例子（来自 Mozilla Developer Network）：
+
+```html
+<table>
+  <tr>
+    <td> </td>
+    <td>Knocky</td>
+    <td>Flor</td>
+    <td>Ella</td>
+    <td>Juan</td>
+  </tr>
+  <tr>
+    <td>Breed</td>
+    <td>Jack Russell</td>
+    <td>Poodle</td>
+    <td>Streetdog</td>
+    <td>Cocker Spaniel</td>
+  </tr>
+  <tr>
+    <td>Age</td>
+    <td>16</td>
+    <td>9</td>
+    <td>10</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td>Owner</td>
+    <td>Mother-in-law</td>
+    <td>Me</td>
+    <td>Me</td>
+    <td>Sister-in-law</td>
+  </tr>
+  <tr>
+    <td>Eating Habits</td>
+    <td>Eats everyone's leftovers</td>
+    <td>Nibbles at food</td>
+    <td>Hearty eater</td>
+    <td>Will eat till he explodes</td>
+  </tr>
+</table>
+```
+
+以上源代码大致呈现出这样的效果：
+
+|               | Knocky                    | Flor            | Ella         | Juan                      |
+| ------------- | ------------------------- | --------------- | ------------ | ------------------------- |
+| Breed         | Jack Russell              | Poodle          | Streetdog    | Cocker Spaniel            |
+| Age           | 16                        | 9               | 10           | 5                         |
+| Owner         | Mother-in-law             | Me              | Me           | Sister-in-law             |
+| Eating Habits | Eats everyone's leftovers | Nibbles at food | Hearty eater | Will eat till he explodes |
+
+我们也可以使用专门的 `<th>` 标签来定义表格标题。
+
+------
+
+Note：
+
+`<table>`、`<td>`、`<tr>`、`<th>` 这些标签都是什么意思？
+
+`table` 在英语中除了有桌子的含义，也用于指代表格。
+
+`td` 是*表格数据*（table data）的缩写。
+
+`tr` 是*表格行*（table raw）的缩写。
+
+`th` 是*表格标题*（table header）的缩写。
+
+------
 
