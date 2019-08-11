@@ -68,17 +68,17 @@ HTML 的首个公开描述出现于一个名为“HTML 标签”的文件中，�
 
 ![A sample table showing names and ages of some people - Chris 38, Dennis 45, Sarah 29, Karen 47.](https://mdn.mozillademos.org/files/14583/numbers-table.png)
 
-> 图片来自：Mozilla Developer Network
+> 图片来源：https://mdn.mozillademos.org/files/14583/numbers-table.png，Mozilla Developer Network
 
 ![A swimming timetable showing a sample data table](https://mdn.mozillademos.org/files/14587/swimming-timetable.png)
 
-> 图片来自：Mozilla Developer Network
+> 图片来源：https://mdn.mozillademos.org/files/14587/swimming-timetable.png，Mozilla Developer Network
 
 表格在人类社会中很常见，而且已经存在很长时间了，下面这张 1800 年美国的人口普查表就足以反映。
 
 ![A very old parchment document; the data is not easily readable, but it clearly shows a data table being used.](https://mdn.mozillademos.org/files/14585/1800-census.jpg)
 
-> 图片来自：Mozilla Developer Network
+> 图片来源：https://mdn.mozillademos.org/files/14585/1800-census.jpg，Mozilla Developer Network
 
 常见的文档处理程序，如 Microsoft Office Word 等，都提供了电子表格的支持，HTML 也拥有一套方法来处理和呈现 Web 上表格形式的数据。
 
