@@ -166,7 +166,7 @@ HTML 中有许多元素和属性可以生成特定的控件。其中一个重要
 
 Note：
 
-单选按钮是 `type` 属性为 `radio` 的 `<input>` 元素，因为它们的外观和操作方式与老式无线电收音机（radio）上的按钮类似，如下图所示。
+单选按钮是 `type` 属性为 `"radio"` 的 `<input>` 元素，因为它们的外观和操作方式与老式无线电收音机（radio）上的按钮类似，如下图所示。
 
 ![Shows what radio buttons looked like in the olden days.](assets/old-radio.jpg)
 
@@ -176,4 +176,59 @@ Note：
 
 **2. select**
 
-在本节的开头部分，
+HTML `<select>` 标签用于创建下拉菜单控件，在单选按钮的基础上更进一步，将一组选项（option）视为一个整体，包含在一对 `<select>` 标签中。每个选项用一对 `<option>` 标签标记。下拉菜单控件被单击后，会显示所有选项，可以在其中进行选择。
+
+![1565584238135](assets/1565584238135.png)
+
+一个普通的 `<select>` 标签看起来是下面这样：
+
+```html
+<select>
+    <option>小猫</option>
+    <option>小狗</option>
+    <option>兔子</option>
+    <option>仓鼠</option>
+</select>
+```
+
+默认状态下下拉菜单只会显示第一个选项的内容，选中其他选项后则会显示其他选项。如果需要预先指定某个选项已经选中，那么就需要设置那个 `<option>` 标签的 `selected` 属性。
+
+```html
+<select>
+    <option>小猫</option>
+    <option>小狗</option>
+    <option selected="selected">兔子</option>
+    <option>仓鼠</option>
+</select>
+```
+
+在 HTML 标签中，如果属性的名称与值一模一样，那么只需写出属性名称即可，因此 `<option selected="selected">` 也可以写成 `<option selected>`。如果需要同时选择多个选项，只需要开启 `<select>` 标签的 `multiple` 属性，这时按住 `Ctrl` 键即可进行多选。多选模式下，下拉菜单一直保持“打开”状态，因此应用以上特性后的效果如下：
+
+![1565584162296](assets/1565584162296.png)
+
+如果一个下拉菜单中的选项需要按照不同类别进一步分组，使用户得以更加清晰、高效地进行选择，可以用 `<optgroup>` 将选项分隔开，`<optgroup>` 的 `label` 属性记录每一组的名称。如果一组选项暂时要禁用，可以设置 `<optgroup>` 的 `disabled` 属性，而 `<option>` 也有这个属性，用于禁用某个特定的选项。
+
+```html
+<select>
+  <optgroup label="亚洲">
+    <option>中国</option>
+    <option>日本</option>
+    <option disabled>印度</option>
+  </optgroup> 
+  <optgroup label="欧洲">
+    <option>英国</option>
+    <option>法国</option>
+    <option>意大利</option>
+    <option>葡萄牙</option>
+  </optgroup>
+  <optgroup label="美洲" disabled>
+    <option>巴西</option>
+    <option>阿根廷</option>
+    <option>墨西哥</option>
+  </optgroup>
+</select>
+```
+
+这时虽然选项较多，却没有直接堆砌，而是按照所属类别（大洲）进行分组，其中亚洲类的印度选项和美洲类被暂时禁用，不能进行选择。
+
+![1565586248914](assets/1565586248914.png)
