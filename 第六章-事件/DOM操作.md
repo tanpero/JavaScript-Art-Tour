@@ -68,6 +68,73 @@ alert(aBook.hasChildNodes()); // true（有文本子节点）
 
 更多时候，我们会希望精准地知道一个元素是否拥有有效的子元素，那么我们可以先检查它是否存在子节点，然后查看子节点的 `nodeType` 属性来确定它是否为元素节点。
 
+**访问特定节点**
+
+有几种不同的方法可以针对位置关系访问特定节点。除了使用 `children` 或 `childNodes` 获得“一堆”子节点之外，还有其它一些选择。
+
+- `firstElementChild`：访问第一个子元素
+- `lastElementChild`：访问最后一个子元素
+
+让我们再来看看这个例子。
+
+```html
+<body>
+  <ul id="books">
+    <li>《平凡的世界》</li>
+    <li>《活着》</li>
+    <li>《文化苦旅》</li>
+    <li>《许三观卖血记》</li>
+    <li>《悲惨世界》</li>
+    <li>《复活》</li>
+  </ul>
+</body>
+```
+
+现在让我们分别定位第一个和最后一个元素。
+
+```javascript
+// 这里的 innerHTML 属性可供查看元素的内容
+const books = document.getElementById("books");
+alert(books.firstElementChild.innerHTML); // "《平凡的世界》"
+alert(books.lastElementChild.innerHTML);  // "《复活》"
+```
+
+如果我们想获取别的子元素，可以**先得到一个子元素**，然后**访问它的兄弟元素（sibling element）**。这里分别借助 `firstElementChild` 和 `lastElementChild` 确定首尾子元素，再使用 `previousElementSibling`和`nextElementSibling`属性获取“下一个兄弟元素”和“上一个兄弟元素”。
+
+
+```javascript
+const books = document.getElementById("books");
+alert(books.firstElementChild.nextElementSibling.innerHTML);    // "《平凡的世界》"
+alert(books.lastElementChild.previousElementSibling.innerHTML); // "《悲惨世界》"
+```
+
+`document.head` 和 `document.body` 两个对象分别对应页面中唯一的 `<head>` 与 `<body>` 元素，它们之间的关系也显而易见。
+
+```javascript
+// <head> 后面跟着 <body>
+alert(document.head.nextSibling);     // HTMLBodyElement（<body> 元素对象的名称）
+// <body> 前是 <head>
+alert(document.body.previousSibling); // HTMLHeadElement（<head> 元素对象的名称）
+```
+
+DOM 提供了对子元素、兄弟元素的访问操作，是否还为父元素预留了位置呢？当然！`parentElement` 得到的就是一个元素的父元素的对象。
+
+```javascript
+const books = document.getElementById("books");
+// <ul id="books"> 外面是 <body>
+alert(books.parentElement);      // HTMLBodyElement
+alert(document.body.parentNode); // HTMLHtmlElement（<html> 元素对象的名称）
+
+// document.documentElement 对象代表“整个文档”，也就是整个 <html> 元素及其所有子元素
+alert(document.body.parentNode === document.documentElement); // true
+```
+
+综上所述，一个位于 `<body>` 中的普通元素，它的层次关系大致如下图所示。
+
+![1565679212423](assets/1565679212423.png)
+
+根据普通节点与元素节点相关方法的对应关系，DOM 也提供了类似的`firstChild`，`lastChild`，`previousSibling`，`nextSibling`和`parentNode`属性。这些属性获取所有类型的节点，而不仅仅是元素节点。在实践中，我们一般只关注对元素节点的处理。
+
 
 
 
