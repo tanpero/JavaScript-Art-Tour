@@ -141,6 +141,41 @@ alert(document.body.parentNode === document.documentElement); // true
 
 ### 动态创建内容
 
+我们此前见过的绝大多数 DOM 方法与属性都只能用来查找元素。`getElement(s)By(xxx)` 类方法可以方便快捷地找到文档中某个或某些特定的元素节点，这些节点随后又可以通过 `setAttribute` 设置属性。元素或节点对象的一些属性又可以获得另一些相关的元素或节点对象。在这些示例中，Web 页面的结构由 HTML 负责创建，由 JavaScript 负责操作某些细节，其中最为重要的就是用 JavaScript 来操控 DOM ，改变页面的结构和内容。这一小节里我们将学习一些 DOM 方法，通过创建新元素和修改现有元素来更新文档。
+
+在正式开始利用 DOM 方法来操作文档前，我们先回顾两个在前面章节中使用到的技术：`document.write` 和 `innerHTML`。
+
+**document.write**
+
+`document.write` 方法可以快捷地把字符串插入到文档里。
+
+我们建立一份 HTML 文件，里面保存如下内容，文件名可以定为 `test.html`。
+
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charser="utf-8" />
+        <title>测试</title>
+    </head>
+    <body>
+        <script>
+            document.write("<h1>这是一个标题</h1><p>这是一段文本</p>");
+        </script>
+    </body>
+</html>
+```
+
+在 Web 浏览器里加载这个页面，我们会看到如下的内容。
+
+![1565682021275](assets/1565682021275.png)
+
+`document.write` 最大的问题是，它混淆了“内容呈现”与“逻辑”的界限，违背了“行为与表现分离”的原则，把原本应该由 HTML 本身做的事情硬生生搬进了 JavaScript 代码，在这种情况下写出的 HTML 往往会产生格式混乱，难以维护。使用 `document.write` 除了初学时用于打印输出的一点方便之外，实在带来不了什么好处，请尽量避免使用它。
+
+**innerHTML 属性**
+
+DOM 元素对象的 `innerHTML` 属性始于微软的 Internet Explorer 4 浏览器，此后逐渐被其他浏览器所接受，最终纳入了 HTML5 标准。`innerHTML` 可以读、写一个元素的 HTML 内容，
+
 
 
 
