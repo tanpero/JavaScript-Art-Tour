@@ -174,7 +174,7 @@ alert(document.body.parentNode === document.documentElement); // true
 
 **innerHTML 属性**
 
-DOM 元素对象的 `innerHTML` 属性始于微软的 Internet Explorer 4 浏览器，此后逐渐被其他浏览器所接受，最终纳入了 HTML5 标准。`innerHTML` 可以读、写一个元素的 HTML 内容，
+DOM 元素对象的 `innerHTML` 属性始于微软的 Internet Explorer 4 浏览器，此后逐渐被其他浏览器所接受，最终纳入了 HTML5 标准。`innerHTML` 可以读、写给定元素的 HTML 内容，
 
 
 
