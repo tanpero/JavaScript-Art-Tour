@@ -174,7 +174,36 @@ alert(document.body.parentNode === document.documentElement); // true
 
 **innerHTML 属性**
 
-DOM 元素对象的 `innerHTML` 属性始于微软的 Internet Explorer 4 浏览器，此后逐渐被其他浏览器所接受，最终纳入了 HTML5 标准。`innerHTML` 可以读、写给定元素的 HTML 内容，
+DOM 元素对象的 `innerHTML` 属性始于微软的 Internet Explorer 4 浏览器，此后逐渐被其他浏览器所接受，最终纳入了 HTML5 标准。`innerHTML` 可以读、写给定元素的 HTML 内容。为了查看它所发挥的效用，我们把这段代码插入 `test.html` 的 `<body>` 部分。
+
+```html
+<div id="test">
+    <p>这是一段<b>重要的</b>内容。</p>
+</div>
+```
+
+根据 DOM 分析一下这个 `<div>` 的结构，
+
+![1565767500359](assets/1565767500359.png)
+
+`<div>` 元素的 `id` 是 `test`，它包含一个元素节点（`<p>` 元素），这个 `<p>` 元素又有一些子节点。其中有两个文本节点，值分别是 `"这是一段"` 和 `"内容"`。还有一个元素节点（`<b>` 元素），`<b>` 元素本身包含一个文本节点，这个文本节点的值是 `"重要的"`。
+
+DOM 为这个元素提供了一幅包含大量细节的图画，使用 DOM 提供的方法和属性可以对任何一个节点进行单独的访问，而 `innerHTML` 属性不需要考虑太多节点之间的关系，直接把元素的内容作为一段字符串交给我们，同时也可以把新的 HTML 源文本填充进去，作为元素的内容。这里，`<div id="test">` 中包含着 `"<p>这是一段<b>重要的</b>内容。</p>"` 这样一段 HTML 字符串。
+
+![1565771987739](assets/1565771987739.png)
+
+在 HTML 源文件的 `<script>` 标签里加入下面的内容。
+
+```javascript
+window.onload = () => {
+    const test = document.getElementById("test");
+    alert(test.innerHTML);
+};
+```
+
+刷新浏览器页面，可以看到 `innerHTML` 中包含的内容被以字符串的形式显示出来。
+
+![1565772422179](assets/1565772422179.png)
 
 
 
