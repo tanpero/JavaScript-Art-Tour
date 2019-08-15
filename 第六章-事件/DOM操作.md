@@ -139,7 +139,7 @@ alert(document.body.parentNode === document.documentElement); // true
 
 
 
-### 动态创建内容
+### 动态创建内容的原始方法
 
 我们此前见过的绝大多数 DOM 方法与属性都只能用来查找元素。`getElement(s)By(xxx)` 类方法可以方便快捷地找到文档中某个或某些特定的元素节点，这些节点随后又可以通过 `setAttribute` 设置属性。元素或节点对象的一些属性又可以获得另一些相关的元素或节点对象。在这些示例中，Web 页面的结构由 HTML 负责创建，由 JavaScript 负责操作某些细节，其中最为重要的就是用 JavaScript 来操控 DOM ，改变页面的结构和内容。这一小节里我们将学习一些 DOM 方法，通过创建新元素和修改现有元素来更新文档。
 
@@ -234,6 +234,32 @@ window.onload = () => {
 ```
 
 在需要往 DOM 中插入一大段内容时，`innerHTML` 可以帮助我们又快又简单地完成这一任务。如果需要对插入的内容进行进一步处理，我们就需要使用 DOM 提供的更加精确的方法与属性。`innerHTML` 属性并没有发挥出 DOM 作为一个模型的优雅，而在任何时候，标准的 DOM 操作都可以用来替代 `innerHTML` 属性。虽说这往往要多编写一些代码才能获得相同的效果，但其所拥有的、更高的精准性和更强大的功能不容小觑。
+
+**innerText**
+
+另一个和 `innerHTML` 有些类似的属性是 `innerText`，不同的是，访问它只会获得元素中所有纯文本内容，忽略所有尖括号标签。将文本写入 `innerText` ，即使里面包含了合法的 HTML 标签，也依然会被视作纯文本，原样呈现。
+
+```javascript
+window.onload = () => {
+    const test = document.getElementById("test");
+    alert(test.innerText);
+    test.innerText = "<p><b>点击这个</b><button>按钮</button></p>";
+}
+```
+
+上述代码会带来如下的效果。
+
+![1565854628479](assets/1565854628479.png)
+
+![1565854636619](assets/1565854636619.png)
+
+
+
+
+
+### 动态创建内容的高级方法
+
+
 
 
 
