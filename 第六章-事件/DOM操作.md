@@ -267,7 +267,19 @@ DOM 就像一条双向车道，不仅可以获取文档的内容，也可以更�
 
 在 DOM 看来，一份文档是一棵由节点构成的 DOM 树在屏幕上的映射。如果想往 DOM 这棵节点树上添加内容，就必须插入新的节点。如果想插入一些标签，对应在 DOM 树上就是插入元素节点。
 
-`getElementById` 和 `getElementsByTagName` 等方法可以把关于文档结构和内容的信息检索出来没他们
+**createElement 方法**
+
+
+
+**appendChild 方法**
+
+
+
+**createTextNode 方法**
+
+
+
+**一个组合的实践**
 
 
 
