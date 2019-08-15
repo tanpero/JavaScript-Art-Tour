@@ -205,6 +205,36 @@ window.onload = () => {
 
 ![1565772422179](assets/1565772422179.png)
 
+显然，`innerHTML` 属性不会考虑多少 DOM 的细节，它把 DOM 内容当做字符串，而不是具有精巧结构的模型。它就像一把大锤一样粗放，而标准的 DOM 操作，则像在层层叠加的结构中，小心穿行的手术刀。`innerHTML` 的用武之地在于它的高效率：要考虑的细节少了，将 DOM 以文本这一最本质的存在形式直接搬运。
+
+如果要把一大段 `HTML` 文本插入页面中，`innerHTML` 是一个值得考虑的选择。它既支持读取，又支持写入，我们不仅可以读出元素包含的 HTML 内容，还可以像拼贴画一样把新的 HTML 粘进去。
+
+现在，我们清空 `<div id="test">` 元素内包含的内容，变成一个空元素，再把下面这段 JavaScript 代码放入 `<script>` 标签中，取代之前的代码。
+
+```javascript
+window.onload = () => {
+    const test = document.getElementById("test");
+    test.innerHTML = "<p>这是一段<b>重要的</b>内容。</p>";
+}
+```
+
+页面刷新后，我们便可以看到如下的效果。
+
+![1565853058826](assets/1565853058826.png)
+
+对 `innerHTML` 属性进行赋值会使得元素中所有 HTML 内容都被替换为新的字符串。如果我们不是为了更改元素中所有的内容，而是附加几行说明文字或一个控件，可以将赋值操作符更改为 `+=` 。
+
+```javascript
+window.onload = () => {
+    const test = document.getElementById("test");
+    test.innerHTML = "<p>这是一段<b>重要的</b>内容。</p>";
+    test.innerHTML += "<br />";
+    test.innerHTML += "<p>这段内容是<i>附加的</i>。</p>";
+}
+```
+
+在需要往 DOM 中插入一大段内容时，`innerHTML` 可以帮助我们又快又简单地完成这一任务。如果需要对插入的内容进行进一步处理，我们就需要使用 DOM 提供的更加精确的方法与属性。`innerHTML` 属性并没有发挥出 DOM 作为一个模型的优雅，而在任何时候，标准的 DOM 操作都可以用来替代 `innerHTML` 属性。虽说这往往要多编写一些代码才能获得相同的效果，但其所拥有的、更高的精准性和更强大的功能不容小觑。
+
 
 
 
