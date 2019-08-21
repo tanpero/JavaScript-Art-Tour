@@ -1,4 +1,4 @@
-## while 和 do-`while` 语句
+## while 和 do-while 语句
 
 ---
 
