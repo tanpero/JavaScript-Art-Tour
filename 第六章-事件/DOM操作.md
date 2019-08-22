@@ -315,7 +315,7 @@ const div = document.getElementById("test");
 div.appendChild(paragraph);
 ```
 
-我们先获取了需要的 `<div>` 元素，然后调用它的 `appendChild` 方法，把刚才创建的 `<p>` 元素*拼接*（append）到 `div` 上面。现在，新创建的 `<p>` 元素就已经成为了 `<div id="test">` 的一个子节点了！它不再无家可归，而是成为 DOM 树上的一段枝丫。
+我们先获取了需要的 `<div>` 元素，然后调用它的 `appendChild` 方法，把刚才创建的 `<p>` 元素*追加*（append）到 `div` 上面。现在，新创建的 `<p>` 元素就已经成为了 `<div id="test">` 的一个子节点了！它不再无家可归，而是成为 DOM 树上的一段枝丫。
 
 在创建节点和拼接子节点时，也可以不使用任何标识符来临时存放节点对象。上面的代码也可以改写成下面这样。
 
@@ -356,6 +356,34 @@ window.onload = () => {
 刷新浏览器的页面，我们成功了！
 
 ![1566463506773](assets/1566463506773.png)
+
+这里我们是按照如下顺序来更新文档的。
+
+1. 创建一个 `<p>` 元素节点。
+2. 把这个 `<p>` 元素节点追加到文档已有的 `<div id="test">` 节点上。
+3. 创建一个文本节点。
+4. 把这个文本节点追加到刚才创建的 `<p>` 元素节点上。`<p>`。
+
+`appendChild` 方法还可以在一个节点尚未成为 DOM 树的一部分之前，为它追加子节点。这样，我们的顺序就可以更改得更优雅一些。
+
+1. 创建一个 `<p>` 元素节点。
+2. 创建一个文本节点。
+3. 把这个文本节点追加到刚才创建的 `<p>` 元素节点上。`<p>`。
+4. 把这个 `<p>` 元素节点追加到文档已有的 `<div id="test">` 节点上。
+
+我们的代码可以写成这样。
+
+```javascript
+window.onload = () => {
+    const paragraph = document.createElement("p");
+    const text = document.createTextNode("我命由我不由天");
+    paragraph.appendChild(text);
+    const div = document.getElementById("test");    
+    test.appendChild(paragraph);    
+}
+```
+
+
 
 **一个组合的实践**
 
