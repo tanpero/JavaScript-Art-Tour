@@ -1,0 +1,3 @@
+- Jeremy Keith, Jeffrey Sambells. *DOM Scripting: Web Design with JavaScript and the Document Object Model, Second Edition*.  Berkeley. Apress L.P. 2010.
+- John Resig, Bear Bibeault, Josip Maras. *JavaScript Ninja, Second Edition*. Greenwich. Manning Publications Co. 2016. 
+- Eric S. Roberts. *Programming Abstractions in C++*. Standford. Pearson Education, Inc. 2014.
