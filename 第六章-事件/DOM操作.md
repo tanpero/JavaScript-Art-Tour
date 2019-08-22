@@ -294,6 +294,18 @@ const paragraph = document.createElement("p");
 
 由于 `paragraph` 这个标识符被确定为**一个元素对象的名称**，它就不应该被改变，以防因为疏忽而造成意想不到的后果，我们把它声明为一个常量。常量 `paragraph` 现在代表刚刚创建出的 `<p>` 元素的对象，此时它还不是 DOM 树的组成部分，而是游荡在 JavaScript 的世界里的一个孤儿。这个 `<p>` 元素的对象被称为*文档碎片*（document fragement），此时它不会对文档的“现实世界”产生任何影响，不过它已经像任何其他的节点那样拥有了自己的 DOM 属性。
 
+这个无家可归的 `<p>` 元素现在已经有一个 `nodeType` 属性和 `nodeName` 属性，我们可以用一段代码来查看。
+
+```javascript
+window.onload = () => {
+    const paragraph = document.createElement("p");
+    let info = `nodeName: ${paragraph.nodeName}  nodeType: ${paragraph.nodeType}`;
+    alert(info);
+}
+```
+
+新节点已经被创造出来了，它有一个值为 `"P"` 的 `nodeName` 属性和值为 `1` 是 `nodeType` 属性，这两个值说明它是一个 `<p>` 元素节点。接下来，我们要把它嫁接到文档上去了。
+
 **appendChild 方法**
 
 
