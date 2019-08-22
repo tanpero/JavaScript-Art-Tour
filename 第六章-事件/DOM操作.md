@@ -327,7 +327,35 @@ document.getElementById("test").appendChild(document.createElement("p"));
 
 **createTextNode 方法**
 
+我们现在已经创建出了一个 `<p>` 元素，并把它嫁接到了 DOM 树上，它是一个空白的段落。现在，我们要把一段真正的文字放进这个 `<p>` 元素，使它呈现出来。显然，用 DOM 的话说，我们要创建一个文本节点，并使它成为 `<p>` 的子节点。这个过程和刚才有些像，不过这回 `createElement` 帮不上忙——它负责的是元素节点。我们可以使用 `createTextNode` 方法来创建文本节点。
 
+下面这行代码会创建一个内容为“我命由我不由天”的文本节点，并将这个节点对象命名为 `text` 。
+
+```javascript
+const text = document.createTextNode("我命由我不由天");
+```
+
+`text` 现在也是 JavaScript 世界里的一个孤儿，在正式成为 DOM 树的一部分之前，它只是一个普通的 JavaScript 对象。现在，我们可以把它插入到文档里去了，这回我们调用的是 `paragraph` 的 `appendChild` 对象。
+
+```javascript
+paragraph.appendChild(text);
+```
+
+现在我们的 `<p>` 元素中就包含了“我命由我不由天”这样一段文本。我们来看一下完整的 JavaScript 代码。
+
+```javascript
+window.onload = () => {
+    const div = document.getElementById("test");
+    const paragraph = document.createElement("p");
+    test.appendChild(paragraph);
+    const text = document.createTextNode("我命由我不由天");
+    paragraph.appendChild(text);
+}
+```
+
+刷新浏览器的页面，我们成功了！
+
+![1566463506773](assets/1566463506773.png)
 
 **一个组合的实践**
 
