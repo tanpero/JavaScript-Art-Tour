@@ -308,7 +308,22 @@ window.onload = () => {
 
 **appendChild 方法**
 
+把新创建的节点插入到某个文档的 DOM 树上最简单的办法是，让它成为这个文档某个现有文档的一个子节点。在这里，我们要在 `<div id="test">` 中插入一个段落（`<p>` 元素），`appendChild` 方法可以完成这一任务。
 
+```javascript
+const div = document.getElementById("test");
+div.appendChild(paragraph);
+```
+
+我们先获取了需要的 `<div>` 元素，然后调用它的 `appendChild` 方法，把刚才创建的 `<p>` 元素*拼接*（append）到 `div` 上面。现在，新创建的 `<p>` 元素就已经成为了 `<div id="test">` 的一个子节点了！它不再无家可归，而是成为 DOM 树上的一段枝丫。
+
+在创建节点和拼接子节点时，也可以不使用任何标识符来临时存放节点对象。上面的代码也可以改写成下面这样。
+
+```javascript
+document.getElementById("test").appendChild(document.createElement("p"));
+```
+
+不过，这样的代码并不好看，也不方便理解。将每个需要用到的对象都单独绑定一个标识符，是正确的选择。
 
 **createTextNode 方法**
 
