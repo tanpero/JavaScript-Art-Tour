@@ -269,7 +269,30 @@ DOM 就像一条双向车道，不仅可以获取文档的内容，也可以更�
 
 **createElement 方法**
 
+我想把一段文本插入 `<div id="test">` 元素。对应到 DOM 的思考方式中，就是添加一个 `<p>` 元素的节点，把这个节点作为 `<div id="test">` 元素的一个子节点。这项任务需要分成两个步骤完成。
 
+1. 创建一个新的元素。
+2. 把这个新元素插入 DOM 树。
+
+第一个步骤要用 DOM 方法 `createElement` 来完成，它的使用方法如下：
+
+```javascript
+document.createElement(元素名称);
+```
+
+因此，创建一个 `<p>` 元素，只需要像这样调用它。
+
+```javascript
+document.createElement("p");
+```
+
+这个方法不会改变页面效果，它只是在内存中创建了一个元素对象，在它成为 DOM 树的一份子之前，我们还需要把它插入到文档中。因此，我们应该有一个标识符来标记这个新创建出来的元素对象。
+
+```javascript
+const paragraph = document.createElement("p");
+```
+
+由于 `paragraph` 这个标识符被确定为**一个元素对象的名称**，它就不应该被改变，以防因为疏忽而造成意想不到的后果，我们把它声明为一个常量。常量 `paragraph` 现在代表刚刚创建出的 `<p>` 元素的对象，此时它还不是 DOM 树的组成部分，而是游荡在 JavaScript 的世界里的一个孤儿。这个 `<p>` 元素的对象被称为*文档碎片*（document fragement），此时它不会对文档的“现实世界”产生任何影响，不过它已经像任何其他的节点那样拥有了自己的 DOM 属性。
 
 **appendChild 方法**
 
