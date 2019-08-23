@@ -18,6 +18,21 @@
 
 
 
+附录里添加一篇编辑器和开发环境选择指南。
+
+- Visual Studio Code
+  - Atom
+  - Bracket
+- WebStorm
+- Sublime Text
+- Notepad++
+  - EditPlus
+- Vim
+  - Emacs
+  - Nano
+
+
+
 第九章
 
 - 介绍了客户端与服务器的概念后，快速搭建一个简易服务器以进行后续示例。
@@ -29,4 +44,3 @@
 - Node.js：编写一个聊天应用。
 - Electron：编写一个音乐播放器。
 - Ionic：编写一个天气应用。
-
