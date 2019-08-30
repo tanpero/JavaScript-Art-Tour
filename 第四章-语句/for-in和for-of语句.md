@@ -134,7 +134,7 @@ for (let i in object) {
 
 ---
 
-Note：我们只能遍历一个*可迭代对象*中的*可枚举属性*，我们将在下文了解这些概念。
+Note：我们只能遍历一个对象中的*可枚举属性*，我们将在下文了解这些概念。
 
 ---
 
@@ -187,7 +187,7 @@ for (let i in s) {
 
 Note: 
 
-每一个可迭代对象都包含一个**迭代器**。迭代器涉及 JavaScript 中一些非常高级的概念，我们将在第七章中详细了解。
+每一个可迭代对象都包含一个**迭代器**。迭代器涉及 JavaScript 中一些相对复杂的概念，我们将在第七章中详细了解。
 
 ---
 
@@ -219,8 +219,6 @@ for (let i of arr) {
 // "ff"
 ```
 
-
-
 与 `for-in` 语句的显著不同之处在于，`for-of` 语句只能对**可遍历对象**进行遍历。如果你对一个普通对象使用 `for-of` 语句，会得到一个错误。
 
 ```javascript
@@ -230,7 +228,7 @@ for (let i of person) {
 } //  TypeError: person is not iterable
 ```
 
-但是不必就此打住：还记得第三章中见到的 `Object.keys` `Object.values` `Object.entries` 三个函数吗？它们得到的是数组！换句话说，我们可以借助于它们来迭代普通对象！
+但是不必就此打住：还记得第三章中见到的 `Object.keys` `Object.values` `Object.entries` 三个函数吗？它们得到的是数组！换句话说，我们可以借助于它们来遍历普通对象！
 
 ```javascript
 for (let [name, value] of Object.entries(person)) {
