@@ -2,7 +2,7 @@
 
 ---
 
-7![](https://img.shields.io/badge/JavaScript-Art--Tour-brightgreen.svg)
+![](https://img.shields.io/badge/JavaScript-Art--Tour-brightgreen.svg)
 
 ![](https://img.shields.io/badge/Tanpero-book-ff69b4.svg)
 

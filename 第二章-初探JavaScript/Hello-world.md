@@ -54,7 +54,7 @@ Hello world 上方的“cn.bing.com”指我输入这行代码时页面所处的
 
 显然，我们不可能一直呆在浏览器地址栏中。我们总不可能在浏览器地址栏中写出一个“愤怒的小鸟”游戏，也不可能写出一个 QQ 或者微信。有个地方可以让我们更加方便地编写和运行 JavaScript 代码，它的链接如下：
 
-https://tanpero.github.io/runner/runner.html
+https://art-book.github.io/runner
 
 
 
