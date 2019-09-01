@@ -4,14 +4,13 @@
 
 ### 内置对象
 
-### **1. 内置变量和非构造函数**
+**1. 内置变量和非构造函数**
 
 我们之前已经介绍了三个内置变量：`Infinity`，`NaN` 和 `undefined`，还有四个内置函数：`parseInt`，`parseFloat`，`isNaN`，`isFinite`。除此之外还有一些函数：
 
 - `encodeURI` 和 `encodeURIComponent` 根据*统一资源标识符*的语法生成一段文本的编码。这些函数将在第九章介绍。
 - `decodeURI` 和 `decodeURIComponent` 执行相应编码的逆操作。这些函数将在第九章介绍。
 - `eval` 将一段字符串视为 JavaScript 代码并执行。如果代码是一个表达式，那么 `eval` 会求出它的值。由于必须对字符串进行编译和解释，因此 `eval` 执行的速度很慢。
-- `Symbol` 得到一个 `symbol` 类型的唯一值。
 
 以下是 `eval` 函数的示例。
 
@@ -56,7 +55,39 @@ if (/[^\d()+*/-%\s]/.test(code)) {
 
 **8. 错误对象**
 
+技术上讲，我们可以使用任何东西来作为一个异常对象。甚至可以是基础类型，比如数字或者字符串。但是更好的方式是用对象，尤其是有 `name` 和 `message` 属性的对象（某种程度上和内置的异常有可比性）。
+ JavaScript 有很多内置的标准异常构造器，我们也可以用它们来构造标准的异常对象。
 
+| JavaScript 标准异常构造器 | 描述                                                |
+| ------------------------- | --------------------------------------------------- |
+| `Error`                   | 默认或自定义的错误。                                |
+| `EvalError`               | 用错误的方式使用 `eval` 函数。                      |
+| `InternalError`           | JavaScript 引擎遇到的内部错误，如：“递归嵌套太多”。 |
+| `RangeError`              | 数值变量或参数超出其有效范围。                      |
+| `ReferenceError`          | 无效的引用、求值过程。                              |
+| `SyntaxError`             | JavaScript 引擎在解析代码时遇到的语法错误。         |
+| `TypeError`               | 变量或参数不属于有效类型。                          |
+| `URIError`                | 给 `encodeURI` 或 `decodeURI` 传递的参数无效。      |
+ 使用异常构造器的方式如下：
+ ```javascript
+let error = new Error(message);
+// 或者
+let error = new SyntaxError(message);
+let error = new ReferenceError(message);
+// ...
+ ```
+ 对于内置的异常对象（不是对于其他的对象，而是对于异常对象），`name` 属性刚好是构造器的名字。`message` 则来自于参数所提供的异常信息。例如：
+ ```javascript
+let error = new Error("不知道发生了什么 (O_o)??");
+alert(error.name);    // "Error"
+alert(error.message); // "不知道发生了什么 (O_o)??"
+ ```
+ 我们可以使用任何东西来作为一个异常对象。甚至可以是基础类型，比如数字或者字符串。但是更好的方式是用对象，尤其是有 `name` 和 `message` 属性的对象。而内置的异常构造器同时为我们设定好了异常所属的类型，因此尽量使用具体的异常构造器。如果异常不是特定的，那么可以直接用 `Error` 构造器。
+ 异常构造器可以通过 `new` 运算符建立新的异常对象，包含下列属性：
+ - `message` —— 我们能阅读的异常提示信息。
+- `name` —— 异常名称（异常对象的构造函数的名称）。
+- `stack` —— 异常发生时的调用栈。
+0 comments on commit b06a724
 
 
 
