@@ -5,3 +5,4 @@
 - Mark E. Daggett. *Expert JavaScript*. Apress Media. 2013.
 - Den Odell. *Pro JavaScript Development: Coding, Capabilities, and Tooling*. Berkeley. Apress L.P.. 2014.
 - Lü Zhihua. *Pro D3.js: High-level programming of interactive Data visualization*. Beijing. Electronic Industry Press. 2015.
+
