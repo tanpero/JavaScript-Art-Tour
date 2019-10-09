@@ -36,14 +36,11 @@
 
   - 这片土地上的旧时光·绪论
 
-- 第二章-初探JavaScript
-  - [千里之行，始于足下·Hello world](第二章-初探JavaScript/Hello-world.md)
-  - [小学数学课·表达式与值](第二章-初探JavaScript/表达式与值.md)
-  - [初中数学课·变量与常量](第二章-初探JavaScript/变量与常量.md)
-  - [闲言碎语话流年·注释](第二章-初探JavaScript/注释.md)
-  - [让世界听我们的话·输入与输出](第二章-初探JavaScript/输入与输出.md)
-  - [互联网的礼服·HTML](第二章-初探JavaScript/HTML.md)
-
+- 第二章-启程
+  - [千里之行，始于足下·Hello world](第二章-启程/Hello-world.md)
+  - [听风知雨·初探 JavaScript](第二章-启程/初探JavaScript.md)
+  - [互联网的礼服·HTML](第二章-启程/HTML.md)
+  
 - 第三章-数据的艺术
   - [万物原动力·逻辑](第三章-数据/逻辑.md)
   - [宇宙谐和论·数值](第三章-数据/数值.md)
