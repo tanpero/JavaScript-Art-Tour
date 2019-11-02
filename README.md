@@ -28,7 +28,9 @@
 
 
 
-<div style="text-decoration:line-through">
+<div style="text-decoration:line-through;color:yellow">
+
+此为原先目录，暂时作废。
 
 ## 本书目录
 
