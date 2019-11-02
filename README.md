@@ -28,9 +28,9 @@
 
 
 
----
+<div style="text-decoration:line-through">
 
-<del>## 本书目录
+## 本书目录
 
 - 第一章-绪论
 
@@ -137,7 +137,7 @@
     Unicode 指南
   - 附录 C
     [键码映射表](附录/键码映射表.md)
-</del>
+</div>
 
 
 
