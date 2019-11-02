@@ -1,0 +1,275 @@
+## 组合的魔法
+
+### ---
+
+在本节中，我们将接触使用高阶函数实现的一些奇妙技巧，它们以函数装饰器的方式实现。如果初次阅读时无法理解这些示例的含义，可以暂时略过，因为这里运用了一些*魔法*，以供佐餐使用 :-D
+
+> **组合子**是只使用函数应用或早先定义的组合子来定义从它们的参数得出的结果的高阶函数。
+>
+> ——Wikipedia
+
+
+
+### B 组合子
+
+*B 组合子*是最基本的、用于组合其它函数的函数装饰器之一。例如，我们有两个函数，分别负责将参数加一和乘二（它们分别代表了一些生活中常见的小函数）。如果我们要编写一个“将参数加一然后乘二”的函数，基于“代码复用”的思想，我们或许会这样写：
+
+```javascript
+const addOne = (number) => number + 1;
+const doubleOf = (number) => number * 2;
+const doubleOfAddOne = (number) => doubleOf(addOne(number));
+alert(doubleOfAddOne(5)); // 12
+```
+
+而 B 组合子这种工具可以将两个函数的功能有机组合起来：
+
+```javascript
+// compose 函数就是一个 B 组合子
+const compose = (a, b) => (c) => a(b(c))；
+const doubleOfAddOne = compose(doubleOf, addOne);
+alert(doubleOfAddOne(5)); // 12
+```
+
+**升级的 B 组合子**
+
+如果我们想要实现一个`compose3`，我们可以写：
+
+```javascript
+const compose3 = (a, b, c) => (d) => a(b(c(d)))
+```
+
+或者可以结合它自身的意义：
+
+```javascript
+const compose3 = (a, b, c) => compose(a, (compose(b, c)))
+```
+
+一旦我们到达`compose4`，我们就应当思考是否存在更好的方法。我们需要的是不限制参数数量的 `compose`，以获得最好的灵活性与便利性——我们可以随意写出 `compose(a, b)`，`compose(a, b, c)` 或 `compose(a, b, c, d)`。
+
+我们可以用递归方式来对不确定参数数量的 `compose` 函数进行实现，首先，我们应从“只有一个参数”这一最简情况开始。
+
+```javascript
+const compose = (a) => a;
+```
+
+接下来可以使用可变参数函数进行扩展：
+
+```javascript
+const compose = (a, ...rest) => "尚未实现";
+```
+
+测试是否有最简情况：
+
+```javascript
+const compose = (a, ...rest) =>
+  rest.length === 0
+    ? a
+    : "尚未实现";
+```
+
+如果不是最简的情况，我们需要将我们的解决方案与其他解决方案结合起来。换句话说，我们需要结合`fn`使用`compose(...rest)`。我们怎么做？好吧，考虑一下`compose(a, b)`。我们知道这`compose(b)`是最简情况，只会得到 `b`。同时，我们知道 `compose(a, b) `  相当于 `(c) => a(b(c))` 。
+
+因此，让我们把 `compose(b)` 替换为为 `b` 本身：
+
+```javascript
+compose(a, compose(b)) === (c) => a(compose(b)(c))
+// true
+```
+
+现在，把 `...rest` 替换为 `b` 本身：
+
+```javascript
+compose(a, compose(...rest)) === (c) => a(compose(...rest)(c))
+// true
+```
+
+那么，我们要做的事情就是：
+
+```javascript
+const compose = (a, ...rest) =>
+  rest.length === 0
+    ? a
+    : (c) => a(compose(...rest)(c));
+```
+
+如果递归的实现方式看起来令人迷惑不解，也可以考虑用迭代方式实现的版本：
+
+```javascript
+const compose = (...fns) =>
+  (value) =>
+    fns.reverse().reduce((acc, fn) => fn(acc), value);
+```
+
+两种 B 组合子的思想是相通的：组合一系列函数，创建一个新函数。
+
+意义也是相同的：我们可以编写更好的单一用途函数，并以我们需要的方式将它们组合在一起。
+
+
+
+
+
+### 管道
+
+`compose`非常方便，它的缺点则是不能很好地处理函数之间的执行顺序。`compose` 之所以这样写，是因为它与语言中 `b(a(sth))` 这样显式组合函数的方式相匹配。
+
+在处理数据的流程中，使用另一种组合函数的方式有时更符合我们的需求，如“值流经 a 然后通过 b。”这种组合方式被称为*管道*（pipeline），因为像提供了一个给值流过的“管道”而得名。我们可以定义并使用 `pipeline`函数：
+
+```javascript
+const pipeline = (...fns) =>
+    (value) => 
+        fns.reduce((acc, fn) => fn(acc), value);
+
+const setter = pipeline(addOne, doubleOf);
+alert(setter(5)); // 12
+```
+
+比较 `pipeline` 和 `compose` 两个函数。 `pipeline` 说，“把一个数加一，然后乘以二。” `compose` 说，“双倍一个数加一的结果。”它们都做同样的工作，却使用了不同的思考与沟通方式。
+
+
+
+
+
+### 柯里化
+
+*柯里化*是一种把多个形参的函数转化为一系列单个形参的函数并逐次调用的技术，它以数学家 Haskell Curry 命名。柯里化允许我们把函数与传递给它的实参结合，产生一个新的参数。用更精确的语言描述，柯里化就是通过降低函数的*通用性*，来增强函数的*适用性*（或说*专用性*）。让我们来看一个简单的示例：
+
+```javascript
+const multiply = (a, b, c) => a * b * c;
+alert(multiply(1, 2, 3)); // 6
+```
+
+这个函数接受 3 个数字，将数字相乘并返回结果。我们创建一个被柯里化后的版本，然后在一系列的调用中逐渐增加参数，直到给予了 `multiply` 足够的参数，使其进行最终计算。
+
+```javascript
+const multiply = a => b => c => a * b * c;
+alert(multiply(1)(2)(3)); // 6
+```
+
+我们已经将 `multiply(1, 2, 3)` 这样的单个函数调用，转换为 `multiply(1)(2)(3)` 这样的多个函数调用。一个独立的函数已经被转换为一系列函数。为了得到1, 2 和 3三个数字想成的结果，这些参数一个接一个传递，每个数字都预先传递给下一个函数以便在内部调用。我们可以拆分 `multiply(1)(2)(3)` 以便更好的理解它：
+
+```javascript
+const mul1 = multiply(1);
+const mul2 = mul1(2);
+const result = mul2(3);
+alert(result);           // 6
+```
+
+让我们依次调用他们。我们传递了 `1` 给 `multiply`。
+
+```javascript
+const mul1 = multiply(1);
+// 此时 mul1 的值是下面这个函数：
+// b => c => 1 * b * c;
+
+const mul2 = mul1(2);
+// 此时 mul2 的值是下面这个函数：
+// c => 1 * 2 * c;
+
+const result = mul2(3);
+// 代入求值
+```
+
+作为嵌套函数，`mul2` 可以访问外部函数的变量作用域，它是一个闭包。这就是 `mul2` 能够使用在已经退出的函数中定义的变量做加法运算的原因。由于使用了闭包，前一次函数调用中获得的参数值仍然可以在接下来的函数中使用，直到所有参数都被代入了值，这时就进行最终的计算。让我们看另一个示例：
+
+```javascript
+const volume = (l, w, h) => l * w * h;
+alert(volume(100, 20,90));    // 180000
+```
+
+我们有一个函数 `volume` 来计算任何一个立方体的体积。被柯里化的版本将接受一个参数并且返回一个函数，这个新函数依然会接受一个参数并且返回一个新函数。这个过程会一直持续，直到最后一个参数到达并且返回最后一个函数，最后返回的函数会使用之前接受的参数和最后一个参数进行乘法运算。
+
+```javascript
+const volume = l => w => h => l * w * h;
+alert(volume(100)(20)(90)) // 180000
+```
+
+像我们在函数 `multiply` 中所做的一样，最后一个函数只接受参数 `h`，但是会使用早已返回的其它作用域的变量来进行运算，闭包使得它可以工作。柯里化还可以用于避免频繁调用具有相同参数的函数。假设我们有一批立方体的体积需要计算，恰好所有立方体的高都是 100 米，我们会发现每次调用 `volume` 都要重复传入相同的高度值。
+
+```javascript
+alert(volume(200, 30, 100));    // 2003000
+alert(volume(32, 45, 100));     // 144000
+alert(volume(2322, 232, 100));  // 53870400
+```
+
+为了解决这个问题，需要柯里化这个计算体积的函数，像我们之前做的一样。然后就可以定义一个特定的函数，这个函数根据特定的圆柱体高度和不同的长宽计算体积。
+
+```javascript
+const volumeWith100m = volume(100);
+alert(volumeWith100m(200)(30));    // 600,000l
+alert(volumeWith100m(2322)(232);   // 53,870,400l
+```
+
+根据前人的经验，我们有一个通用的柯里化函数实现。它能接受任何函数，并返回一个被柯里化的版本。
+
+```javascript
+const curry = (fn, ...args) => (..._args) => fn(...args, ..._args);
+```
+
+我们在这里做了什么呢？我们的柯里化函数接受一个我们希望被柯里化的函数 `fn`，还有一系列的参数 `...args`。扩展运算符在这里的作用是，接受一部分 `fn` 的参数，并放在数组 `args` 中。`curry` 返回一个函数，这个函数同样将剩余的参数收集到 `_args` 中，然后用 `_args` 保存的参数值列表来调用 `fn`。我们可以使用 `curry` 来批量创建新的被柯里化的函数。
+
+```javascript
+const volume = (l,h,w) => l * h * w;
+const result = curry(volume, 100);
+alert(result(200, 900);      // 18000000
+alert(result(70, 60);        // 420000
+```
+
+
+
+------
+
+Note：
+
+在 C++ 这类语言中存在一种机制，使得同一个函数，当输入的参数数量和类型不同时，分别调用不同的实现版本，称为*函数重载*。函数重载看起来大致是这样子的：
+
+```javascript
+// 重载的第一个版本：
+let hello = (a, b) => alert("有两个参数：" + a + "和" + b);
+
+// 重载的第二个版本：
+hello = (a) => alert("有一个参数：" + a);
+
+// 期望的工作方式：
+hello(1, 2); // "有两个参数：1和2"
+hello(3);    // "有一个参数：3"
+```
+
+JavaScript 并没有在语言层面上提供这种机制，因此后面定义的 `hello` 函数会覆盖前面的。但是 John Resig 提出了一种在 JavaScript 中实现函数重载的方式，这种方式要求重载的函数必须是某个类的方法。
+
+```javascript
+const addMethod = (object, name, fn) => {
+  
+	// 保存原有的函数，因为调用的时候可能不匹配传入的参数个数
+	let old = object[name];
+  
+	// 创建一个新匿名函数作为新方法
+	object[name] = (...args) => {
+    
+        // 如果该匿名函数的形参个数和实参个数匹配，就调用该函数
+        if (fn.length === args.length) {
+            return fn(...args);
+            
+        // 如果传入的参数不匹配，则调用原有的参数
+        } else if (typeof old === 'function') {
+            return old(...args);
+        }
+    }
+}
+```
+
+我们可以像这样使用：
+
+```javascript
+let obj = {};
+addMethod(obj, "hello",
+          (a, b) => alert("有两个参数：" + a + "和" + b));
+addMethod(obj, "hello",
+          (a) => alert("有一个参数：" + a));
+obj.hello(1, 2); // "有两个参数：1和2"
+obj.hello(3);    // "有一个参数：3"
+```
+
+如果我们传入的对象是 `window` ，那么我们实际上可以重载全局函数。函数重载是一种称为*多态*的编程技术的简便实现方式，它在应用开发中承担着许多作用。
+
+------
+
