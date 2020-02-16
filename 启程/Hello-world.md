@@ -8,11 +8,11 @@
 
 编写和运行 JavaScript 代码最简单的方式是在浏览器地址栏中。是的，就是那个用于输入网址以便你去到因特网的任何地方的地址栏。如图所示：
 
-**![1552904604507](./assets/1552904604507.png)**
+![1552904604507](./assets/1552904604507.png)
 
 我所使用的是运行在 Microsoft Windows 10 上的 Google Chrome 浏览器，如果你的浏览器类型或版本与我不同，可能会呈现出不一样的外观。这是没关系的。当然，为了我们接下来的愉快旅程考虑——使用一些 Chrome 或 Firefox 之类的**流行**浏览器会得到更一致的操作体验，更好的兼容性（关于兼容性的问题我们会在第八章详细谈到）。最重要的是，我们所学习的 JavaScript 语言遵循一个2015年正式发布的国际标准：ECMAScript 6。如果您的浏览器版本较低或“*没有跟上时代的步伐*”，将不能很好地运行我们所写的代码。这非常令人不愉快。无论如何，**请不要使用 Internet Explorer**。
 
-回到正题。我们在浏览器地址栏中这样一句代码： ```javascript:alert("Hello world")```，接下来按下 Enter 键，会发生什么有趣的事情呢？
+回到正题。我们在浏览器地址栏中这样一句代码： `javascript:alert("Hello world")`，接下来按下 Enter 键，会发生什么有趣的事情呢？
 
 看！一个弹出来的窗口！上面写着 Hello world 。我们已经成功运行了第一个 JavaScript 程序。
 
@@ -22,7 +22,9 @@ Hello world 上方的“cn.bing.com”指我输入这行代码时页面所处的
 
 现在来分析一下这一行最简单的 JavaScript 代码：
 
-```javascript:alert("Hello world")```
+```javascript
+javascript:alert("Hello world")
+```
 
 前面的 ```javascript: ```标记是告诉浏览器把随后的文本当做 JavaScript 代码来执行，而不是一个网址或搜索内容。它只是一个说明性的标记，不是 JavaScript 语言所规定的。
 
@@ -40,11 +42,15 @@ Hello world 上方的“cn.bing.com”指我输入这行代码时页面所处的
 
 1. 在浏览器地址栏中输入并运行以下代码：
 
-   ```javascript:alert(1 + 1 + 1 + 1)```
+   ```javascript
+   javascript:alert(1 + 1 + 1 + 1)
+   ```
 
 2. 在浏览器地址栏中输入并运行以下代码：
 
-    ```javascript:alert("1" + "1" + "1" + "1")```
+    ```javascript
+    javascript:alert("1" + "1" + "1" + "1")
+    ```
 
 3. 观察运行结果，试猜想为什么会这样。
 
@@ -58,7 +64,9 @@ https://art-book.github.io/runner
 
 在这个代码输入框里，你可以这样输入 Hello world 代码：
 
-```alert("Hello world");```
+```javascript
+alert("Hello world");
+```
 
 点击运行按钮，会得到与刚才相同的效果。
 
@@ -70,27 +78,39 @@ https://art-book.github.io/runner
 
 你已经了解了编写 JavaScript 代码的基本感觉，现在让我们来尝试一些简单有趣的代码片段，在这个 JavaScript 运行器中好好玩耍！
 
-```alert("你的骰子点数是" + Math.ceil(Math.random() * 6));```
+```javascript
+alert("你的骰子点数是" + Math.ceil(Math.random() * 6));
+```
 
 1）这行代码每次运行都会得到一个位于 1 和 6 之间的不一样的骰子点数。
 
-```alert(new Date());```
+```javascript
+alert(new Date());
+```
 
 2）这行代码会以 ISO 标准格式显示当前时间。
 
-```alert(+prompt() % 2 ? "奇数" : "偶数");```
+```javascript
+alert(+prompt() % 2 ? "奇数" : "偶数");
+```
 
 3）这行代码会弹出一个输入框，并判断你所输入的数字是奇数还是偶数。它过于简单了，如果不是数字，它也会显示“偶数”。
 
-```document.body.style.backgroundColor = "pink";```
+```javascript
+document.body.style.backgroundColor = "pink";
+```
 
 4）这行代码会把运行器页面背景调成粉色。
 
-```document.getElementById("head").innerHTML = "Hello World";```
+```javascript
+document.getElementById("head").innerHTML = "Hello World";
+```
 
 5）这行代码会把标题栏的内容改成 “Hello World”。
 
-```document.getElementById("run").onclick = () => alert("Hi");```
+```javascript
+document.getElementById("run").onclick = () => alert("Hi");
+```
 
 6）这行代码会更改运行按钮的行为。当你再次点击运行按钮时，它不会再执行其它代码，而是弹出一个 “Hi” 的对话框。刷新浏览器页面即可恢复原来的样子。·
 
