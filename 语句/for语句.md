@@ -154,7 +154,7 @@ alert(isPrime ? "质数" : "合数"); // "合数"
 ```javascript
 let n = 100;
 let isPrime = true; // 假设它是一个质数
-`for` (let i = 2; i < n; i += 1) {
+for (let i = 2; i < n; i += 1) {
     if (n % i === 0) {
         isPrime = false;
         break;
