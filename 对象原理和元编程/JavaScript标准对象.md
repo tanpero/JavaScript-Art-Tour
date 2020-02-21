@@ -4,11 +4,15 @@
 
 ### 内置对象
 
-**1. 内置变量和非构造函数**
+*内置对象*（internal object）指的是 JavaScript 核心语言中所包含的类与对象。它们直接由 ECMAScript 标准定义，与运行环境没有关系，但任何 JavaScript 环境都必须预先按照标准实现这些对象，无论是台式计算机，还是移动设备，抑或是手掌大小的单片机。内置对象与语法本身，构成了 JavaScript 的核心语言。
+
+内置对象既包含真真正正的对象（如 `Math`），又包括基本类型所对应的类（如 `Number`）和建立其他一些对象的类（如 `Promise`），还有一些就是单纯的函数和变量（如 `parseInt` 和 `NaN`）。内置对象如同构成 JavaScript 强大力量的基础元件，因此也叫*内置基元*。
+
+**1. 内置变量和普通函数**
 
 我们之前已经介绍了三个内置变量：`Infinity`，`NaN` 和 `undefined`，还有四个内置函数：`parseInt`，`parseFloat`，`isNaN`，`isFinite`。除此之外还有一些函数：
 
-- `encodeURI` 和 `encodeURIComponent` 根据*统一资源标识符*的语法生成一段文本的编码。这些函数将在第九章介绍。
+- `encodeURI` 和 `encodeURIComponent` 根据将一段普通文本根据*统一资源标识符*的要求编码为对应的*安全版本*。这些函数将在第九章介绍。
 - `decodeURI` 和 `decodeURIComponent` 执行相应编码的逆操作。这些函数将在第九章介绍。
 - `eval` 将一段字符串视为 JavaScript 代码并执行。如果代码是一个表达式，那么 `eval` 会求出它的值。由于必须对字符串进行编译和解释，因此 `eval` 执行的速度很慢。
 
@@ -87,7 +91,6 @@ alert(error.message); // "不知道发生了什么 (O_o)??"
  - `message` —— 我们能阅读的异常提示信息。
 - `name` —— 异常名称（异常对象的构造函数的名称）。
 - `stack` —— 异常发生时的调用栈。
-0 comments on commit b06a724
 
 
 
