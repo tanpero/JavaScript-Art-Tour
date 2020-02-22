@@ -59,5 +59,38 @@ ECMAScript 标准定义了一批用来在语言内部实现某些特性的属性
 
 来整理一下这些术语的关系：**一些对象拥有定义正确的 `@@iterator` 内部方法，它们符合可迭代协议，是可迭代对象。它们的 `@@iterator` 方法实际上是一个迭代器，每次迭代时会自动得到一个值。**
 
-我们不能直接访问 `@@iterator` 这样的内部方法，但是可以通过 `Symbol.iterator` 访问到。因此，我们可以像这样定义一个最简单的可迭代对象。
+为了在每次迭代时提供一个新值, `@@iterator` 方法必须被实现为一个**生成器函数**。我们不能直接访问 `@@iterator` 这样的内部方法，但是可以通过 **`Symbol.iterator`** 访问到。因此，我们可以像这样定义一个最简单的可迭代对象。
+
+```javascript
+let it = {
+    *[Symbol.iterator]() {
+        yield 1;
+        yield 2;
+        yield 3;
+    }
+};
+```
+
+我们看到， `it` 已经定义了正确的 `@@iterator` 方法，它现在是一个符合迭代协议的可迭代对象了。
+
+```javascript
+alert([...it]); // 1,2,3
+for (let i of it) {
+    alert(i);
+}
+// 1
+// 2
+// 3
+```
+
+如果一个对象实现了 `@@iterator` ，却不是生成器函数，会怎样呢？
+
+```javascript
+let fakeIt = {
+    [Symbol.iterator]: () => "Hello";
+}
+[...fakeIt]; //
+```
+
+
 
