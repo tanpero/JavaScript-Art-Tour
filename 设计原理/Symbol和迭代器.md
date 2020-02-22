@@ -59,7 +59,7 @@ ECMAScript 标准定义了一批用来在语言内部实现某些特性的属性
 
 来整理一下这些术语的关系：**一些对象拥有定义正确的 `@@iterator` 内部方法，它们符合可迭代协议，是可迭代对象。它们的 `@@iterator` 方法实际上是迭代器函数，它返回一个迭代器，每次迭代时会自动得到一个值。**
 
-为了在每次迭代时提供一个新值, `@@iterator` 方法必须被实现为一个**生成器函数**。我们不能直接访问 `@@iterator` 这样的内部方法，但是可以通过 **`Symbol.iterator`** 访问到。因此，我们可以像这样定义一个最简单的可迭代对象。
+为了在每次迭代时提供一个新值, `@@iterator` 方法可以被实现为一个**生成器函数**。我们不能直接访问 `@@iterator` 这样的内部方法，但是可以通过 **`Symbol.iterator`** 访问到。因此，我们可以像这样定义一个最简单的可迭代对象。
 
 ```javascript
 let it = {
@@ -71,7 +71,7 @@ let it = {
 };
 ```
 
-我们看到， `it` 已经定义了正确的 `@@iterator` 方法，它现在是一个符合迭代协议的可迭代对象了。
+我们看到， `it` 已经定义了正确的 `@@iterator` 方法，它现在是一个符合迭代协议的可迭代对象了。一些 JavaScript 的语法特性，在语义上只对序列有效，这就要求某个对象必须是符合可迭代协议的，例如序列展开运算符 `...`、`for...of` 语句等。来看看我们的对象能否得到认可：
 
 ```javascript
 alert([...it]); // 1,2,3
@@ -83,7 +83,9 @@ for (let i of it) {
 // 3
 ```
 
-如果一个对象实现了 `@@iterator` ，却不是生成器函数，会怎样呢？
+成功了！总的来说，这些语法特性依赖可迭代协议。
+
+那么，如果一个对象实现了 `@@iterator` ，却不符合可迭代协议，会怎样呢？
 
 ```javascript
 let fakeIt = {
@@ -130,7 +132,7 @@ const makeIterator = (start = 0, end = Infinity, step = 1) => {
            return { value: count, done: true }
        }
     };
-}
+};
 ```
 
 测试一下：
@@ -175,3 +177,44 @@ alert([...happyObject]); // 1,2,3,4,5,6,7,8,9
 ```
 
 我们看到，只要对象有一个符合迭代器协议的`@@iterator` 方法，它本身就符合可迭代协议，成为可迭代对象。这样就可以回答前面的问题了：生成器函数是 JavaScript 内置的一种默认迭代器函数，它可以便捷地提供可迭代对象所需要的序列。其实一个对象既可以是可迭代对象，又可以是迭代器，要做到这点十分容易。
+
+用一个更进一步的例子来结束有关迭代协议的内容，这个例子会构造一段序列，包含 $ 1 \le n \lt 40 $ 的所有奇数。
+
+```javascript
+// 建立一个迭代器函数
+const oggIterator = () => {
+    let nextIndex = 1;
+    let count = 0;
+    
+    return {
+       next() {
+           let result = { value: count, done: true };
+           if (nextIndex < 40) {
+               result = { value: nextIndex, done: false }
+               nextIndex += step;
+               count += 2;
+               return result;
+           }
+           return result;
+       };
+    };
+};
+
+// 进一步构造成可迭代对象
+let oggObject = {
+    [Symbol.iterator]: oggIterator
+};
+alert([...oggIterator]);
+// 1,3,5,7,9,11,13,15,17,19,21,23,25,27,29,31,33,35,37,39
+```
+
+
+
+---
+
+练习 7.4.2
+
+1. 编写一个构造完全平方数序列的迭代器，上限自定。
+2. 利用上一个练习中的迭代器，编写一个可迭代对象，将其构造为数组。
+
+---
