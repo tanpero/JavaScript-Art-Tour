@@ -47,6 +47,14 @@ person[AnotherNAME](); // "Hello Modi"
 
 
 
+### 迭代器
+
+
+
+
+
+
+
 ### 迭代协议
 
 Symbol 值本身带来的意义几乎只是为 JavaScript 增加了一种“创建唯一无二的值”的方式，但是，用于构造 Symbol 值的 `Symbol` 函数，其本身的用途却不仅仅是构造 Symbol 值这么简单。事实上，JavaScript 中许多原本保留的内部细节，都通过 `Symbol` 的一批属性暴露给了我们，这使得 `Symbol ` 包含一组非常强大的工具，能帮助我们在探究 JavaScript 的语言构造和内部设计上如虎添翼。
