@@ -2,7 +2,7 @@
 
 ---
 
-![img](BOOK.assets/F9B33FF24D7418356F52703587ED9922.jpg)
+![img](BOOK/image_165.png)
 
 
 

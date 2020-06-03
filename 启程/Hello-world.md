@@ -78,41 +78,41 @@ alert("Hello world");
 
 你已经了解了编写 JavaScript 代码的基本感觉，现在让我们来尝试一些简单有趣的代码片段，在这个 JavaScript 运行器中好好玩耍！
 
-```javascript
-alert("你的骰子点数是" + Math.ceil(Math.random() * 6));
-```
-
 1）这行代码每次运行都会得到一个位于 1 和 6 之间的不一样的骰子点数。
 
 ```javascript
-alert(new Date());
+alert("你的骰子点数是" + Math.ceil(Math.random() * 6));
 ```
 
 2）这行代码会以 ISO 标准格式显示当前时间。
 
 ```javascript
-alert(+prompt() % 2 ? "奇数" : "偶数");
+alert(new Date());
 ```
 
 3）这行代码会弹出一个输入框，并判断你所输入的数字是奇数还是偶数。它过于简单了，如果不是数字，它也会显示“偶数”。
 
 ```javascript
-document.body.style.backgroundColor = "pink";
+alert(+prompt() % 2 ? "奇数" : "偶数");
 ```
 
 4）这行代码会把运行器页面背景调成粉色。
 
 ```javascript
-document.getElementById("head").innerHTML = "Hello World";
+document.body.style.backgroundColor = "pink";
 ```
 
-5）这行代码会把标题栏的内容改成 “Hello World”。
+5）这行代码可以让你随意更改页面内容（提示：快捷键 Ctrl-Z 可以撤销更改）
+
+```javascript
+document.body.contentEditable = true;
+```
+
+6）这行代码会更改运行按钮的行为。当你再次点击运行按钮时，它不会再执行其它代码，而是弹出一个 “Hi” 的对话框。刷新浏览器页面即可恢复原来的样子。
 
 ```javascript
 document.getElementById("run").onclick = () => alert("Hi");
 ```
-
-6）这行代码会更改运行按钮的行为。当你再次点击运行按钮时，它不会再执行其它代码，而是弹出一个 “Hi” 的对话框。刷新浏览器页面即可恢复原来的样子。·
 
 ---
 
